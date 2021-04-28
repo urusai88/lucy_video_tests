@@ -10,7 +10,7 @@ x265|crf:28 = ffmpeg -y -i assets/full.mp4 -c:v libx265 -tag:v hvc1 -crf 28 -c:a
 x265|crf:28|720w = ffmpeg -y -i assets/full.mp4 -c:v libx265 -tag:v hvc1 -crf 28 -c:a copy -vf scale=720:-1 assets/265_crf28_720w.mp4
 x265|crf:34 = ffmpeg -y -i assets/full.mp4 -c:v libx265 -tag:v hvc1 -crf 34 -c:a copy  assets/265_crf34.mp4
 x265|crf:34|720w = ffmpeg -y -i assets/full.mp4 -c:v libx265 -tag:v hvc1 -crf 34 -c:a copy -vf scale=720:-1 assets/265_crf34_720w.mp4
-x265|crf:28|a:64 = ffmpeg -y -i assets/full.mp4 -c:v libx265 -tag:v hvc1 -crf 28 -c:a aac -b:a 64  assets/265_crf28_a64.mp4
+x265|crf:28|a:64 = ffmpeg -y -i assets/full.mp4 -c:v libx265 -tag:v hvc1 -crf 28 -c:a aac -b:a 64k assets/265_crf28_a64.mp4
 /*
 vp9|crf:31 =
     ffmpeg -y -i assets/full.mp4 -c:v libvpx-vp9 -b:v 0 -crf 31 -pass 1 -an -f null NUL && ffmpeg -y -i assets/full.mp4 -c:v libvpx-vp9 -b:v 0 -crf 31 -pass 2 -c:a libopus assets/vp9_crf31.webm

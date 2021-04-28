@@ -73,8 +73,9 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _onPressed(FileInfo e) async {
     if (currentController != null) {
-      final cc = currentController;
+      currentController!.pause();
 
+      final cc = currentController;
       setState(() {
         currentController = null;
       });
@@ -90,7 +91,7 @@ class _HomePageState extends State<HomePage> {
       final controller = VideoPlayerController.asset(e.assetName);
 
       controller.initialize().then((_) {
-        controller.setVolume(0);
+        controller.setVolume(1);
         controller.setLooping(true);
         controller.play();
         setState(() {});
