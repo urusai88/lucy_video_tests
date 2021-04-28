@@ -1,0 +1,19 @@
+full.mp4 - r:1098x1800 v:9805kbs a:313kbs s:22.9mb
+common.mp4 - r:1098x1800 v:4325kbs a:187kbs s:10.2mb
+low.mp4 - r:1098x1800 v:4325kbs a:187kbs s:7.16mb
+
+x264|crf:23 = ffmpeg -y -i assets/full.mp4 -c:v libx264 -crf 23 -c:a copy  assets/264_crf23.mp4
+x264|crf:23|720w = ffmpeg -y -i assets/full.mp4 -c:v libx264 -crf 23 -c:a copy -vf scale=720:-1 assets/264_crf23_720w.mp4
+x264|crf:29 = ffmpeg -y -i assets/full.mp4 -c:v libx264 -crf 29 -c:a copy  assets/264_crf29.mp4
+x264|crf:29|720w = ffmpeg -y -i assets/full.mp4 -c:v libx264 -crf 29 -c:a copy -vf scale=720:-1 assets/264_crf29_720w.mp4
+x265|crf:28 = ffmpeg -y -i assets/full.mp4 -c:v libx265 -crf 28 -c:a copy  assets/265_crf28.mp4
+x265|crf:28|720w = ffmpeg -y -i assets/full.mp4 -c:v libx265 -crf 28 -c:a copy -vf scale=720:-1 assets/265_crf28_720w.mp4
+x265|crf:34 = ffmpeg -y -i assets/full.mp4 -c:v libx265 -crf 34 -c:a copy  assets/265_crf34.mp4
+x265|crf:34|720w = ffmpeg -y -i assets/full.mp4 -c:v libx265 -crf 34 -c:a copy -vf scale=720:-1 assets/265_crf34_720w.mp4
+x265|crf:28|a:64 = ffmpeg -y -i assets/full.mp4 -c:v libx265 -crf 28 -c:a aac -b:a 64  assets/265_crf28_a64.mp4
+/*
+vp9|crf:31 =
+    ffmpeg -y -i assets/full.mp4 -c:v libvpx-vp9 -b:v 0 -crf 31 -pass 1 -an -f null NUL && ffmpeg -y -i assets/full.mp4 -c:v libvpx-vp9 -b:v 0 -crf 31 -pass 2 -c:a libopus assets/vp9_crf31.webm
+vp9|crf:37 =
+    ffmpeg -y -i assets/full.mp4 -c:v libvpx-vp9 -b:v 0 -crf 37 -pass 1 -an -f null NUL && ffmpeg -y -i assets/full.mp4 -c:v libvpx-vp9 -b:v 0 -crf 37 -pass 2 -c:a libopus assets/vp9_crf37.webm
+*/
