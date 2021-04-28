@@ -50,12 +50,20 @@ class _HomePageState extends State<HomePage> {
       final map = json.decode(manifestString) as Map<String, dynamic>;
       final assets = map.keys.where((e) => e.startsWith('assets')).toList();
 
+      final end = <FileInfo>[];
+
       for (final asset in assets) {
         final byteData = await rootBundle.load(asset);
         final length = byteData.lengthInBytes;
 
-        files.add(FileInfo(assetName: asset, size: length));
+        if (asset.endsWith('a64.mp4')) {
+          end.add(FileInfo(assetName: asset, size: length));
+        } else {
+          files.add(FileInfo(assetName: asset, size: length));
+        }
       }
+
+      files.addAll(end);
 
       setState(() {
         isLoad = true;
