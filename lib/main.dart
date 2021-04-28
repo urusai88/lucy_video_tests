@@ -125,18 +125,20 @@ class _HomePageState extends State<HomePage> {
                 child: VideoPlayer(currentController!),
               ),
             ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: files.map((e) {
-              final fn = e.assetName.split('/').last.split('.').first;
-              final l = e.size / 1024 / 1024;
-              final name = '$fn ${l.toStringAsFixed(1)}MB';
-              return TextButton(onPressed: () => _onPressed(e), child: Text(name));
-            }).toList(),
+          SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: files.map((e) {
+                final fn = e.assetName.split('/').last.split('.').first;
+                final l = e.size / 1024 / 1024;
+                final name = '$fn ${l.toStringAsFixed(1)}MB';
+                return TextButton(onPressed: () => _onPressed(e), child: Text(name));
+              }).toList(),
+            ),
           ),
         ],
       );
     }
-    return Scaffold(body: SafeArea(child: body));
+    return Scaffold(extendBody: true, body: body);
   }
 }
